@@ -1,22 +1,33 @@
-listetest = {{45,"ABC"},{37,"TRENTESEPT"},{45,"BCA"},{183,"ARF"},{37,"pls"},{45,"test"}}
+listetest = {{45,"ABC"},{37,"TRENTESEPT"},{45,"BCA"},{180,"ARF"},{37,"pls"},{45,"test"},{360,"THREE SIXTY"}}
 sortedlist = {}
 
 local function DoesAngleAlreadyExist(data,matrice)
     for index,value in ipairs(matrice) do
         if (data[1] == value[1]) then
-            return index, data[2]
+            return index
         end
     end
-    return nil, {data[1],{data[2]},{}}
+    return nil
 end
 
-local function BuildCheckMatrice(datalist)
+local function AddSpellEntryToAngleMatrix(datalist)
     for index,value in ipairs(datalist) do
-        local place,toinsert = DoesAngleAlreadyExist(value,sortedlist)
+        local place = DoesAngleAlreadyExist(value,sortedlist)
         if place then
-            table.insert(sortedlist[place][2],toinsert)
+            table.insert(sortedlist[place][2],value[2])
         else
-            table.insert(sortedlist,toinsert)
+            table.insert(sortedlist,{value[1],{value[2]},{}})
+        end
+    end
+end
+
+local function AddPassiveEntryToAngleMatrix(datalist)
+    for index,value in ipairs(datalist) do
+        local place = DoesAngleAlreadyExist(value,sortedlist)
+        if place then
+            table.insert(sortedlist[place][3],value[2])
+        else
+            table.insert(sortedlist,{value[1],{},{value[2]}})
         end
     end
 end
@@ -25,7 +36,7 @@ local function Lu_BsF_BuildCheckLists(ConfigFile)
     local ParsedFile = Ext.Json.Parse(ConfigFile) 
     for _,spell in ipairs(ParsedFile.EnablingSpells) do
         table.insert(Lu_BsF_EnablingSpells,spell)
-        table.insert(Lu_BsF_SpellsAngle,{90,spell})
+        --table.insert(Lu_BsF_SpellsAngle,{90,spell})
         --_D(Lu_BsF_EnablingSpells)
     end
     for _,passive in ipairs(ParsedFile.EnablingPassives) do
@@ -57,6 +68,10 @@ local function OnSessionLoaded()
     Sorted_List = {}
     local ConfigFile = Ext.IO.LoadFile("Mods/BackstabbingFramework/BackstabbingBlueprint-Example.json","data")
     Lu_BsF_BuildCheckLists(ConfigFile)
+    AddSpellEntryToAngleMatrix(listetest)
+    _D(sortedlist)
+    AddPassiveEntryToAngleMatrix(Lu_BsF_PassivesAngle)
+    _D(sortedlist)
 end
 
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
