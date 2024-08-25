@@ -26,3 +26,6 @@ The Angle is this file are basically divided by 2, and applied on each side of t
 
 The backstabbing state is handled through a status, called ```BACKSTABBING_FRAMEWORK_MAIN_STATUS_200001```, so for you to be able to use backstabbing this status will have to show up as conditions to the passives, spell, scripts or whatever you want of your mod. I'll consider supporting custom status later.
 
+### Thanks
+
+To Norbyte for being the goat. To Volitio and NellsRello, for their amazing mod respectively MCM and the Community Library, from which I yoinked some code lines. Also to Aahz, Focus, Muffin, Simosas, Satan and Mithras for helping me with the scripting.  Also thanks to JuuM, for being MuuJ, and to Sensha (the actual goat) cause she's good at maths and gave me the inspiration for this mod.
