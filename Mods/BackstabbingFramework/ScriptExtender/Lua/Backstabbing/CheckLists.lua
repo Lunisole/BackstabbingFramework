@@ -16,22 +16,22 @@ end
 local function Lu_BsF_SpellInList(spell,list)
     for _,spellcheck in pairs(list) do
       if (spell == spellcheck) then
-        print('Spell is Valid')
+        --print('Spell is Valid')
         return true
       end
     end
-    print('Spell is Invalid')
+    --print('Spell is Invalid')
     return false
 end
 
 local function Lu_BsF_PassiveInList(entity,list)
     for _,passivecheck in pairs(list) do
       if (HasPassive(entity,passivecheck) == 1) then
-        print('Entity Has Valid Passive')
+        --print('Entity Has Valid Passive')
         return true
       end
     end
-    print('Entity has no Valid Passive')
+    --print('Entity has no Valid Passive')
   return false
 end
 
@@ -39,7 +39,5 @@ end
 Ext.Osiris.RegisterListener("StartedPreviewingSpell", 4, "before", function (backstabber,spell,_,_,_)
     if (Lu_BsF_SpellInList(spell,Lu_BsF_EnablingSpells) or Lu_BsF_PassiveInList(backstabber,Lu_BsF_EnablingPassives)) then
         Lu_BsF_BackstabbingInit(backstabber,spell)
-    else
-        print('Backstab disabled')
     end
 end)

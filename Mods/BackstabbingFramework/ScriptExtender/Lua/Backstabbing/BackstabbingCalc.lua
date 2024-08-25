@@ -1,20 +1,20 @@
 local function Lu_BsF_AngleMinMax(angle)
-    _P("In AngleMinMax:",angle)
+    --_P("In AngleMinMax:",angle)
     local anglemin = (math.pi-(angle/2)*math.pi/180)
     local anglemax = (math.pi+(angle/2)*math.pi/180)
     return anglemin,anglemax
 end 
 
 local function Lu_BsF_CharSteeringVec(target)
-    _P("In CharSteeringVec:",target)
-    local targetzsteering = math.cos(Ext.Entity.Get(target).Steering.field_C)
-    local targetxsteering = math.sin(Ext.Entity.Get(target).Steering.field_C)
+    --_P("In CharSteeringVec:",target)
+    local targetzsteering = math.cos(Ext.Entity.Get(target).Steering.TargetRotation)
+    local targetxsteering = math.sin(Ext.Entity.Get(target).Steering.TargetRotation)
     local orient = {targetxsteering,0,targetzsteering}
     return orient
 end 
 
 local function Lu_BsF_BackstabbingCheck(backstabber,target,distance,anglemin,anglemax)
-    _P("In BackstabbingCheck:",backstabber,target,anglemin,anglemax)
+    --_P("In BackstabbingCheck:",backstabber,target,anglemin,anglemax)
     local normalized = Ext.Math.Normalize(distance)
     local DP = Ext.Math.Dot(Lu_BsF_CharSteeringVec(target),normalized)
     local currentangle = Ext.Math.Acos(DP)
@@ -26,12 +26,12 @@ local function Lu_BsF_BackstabbingCheck(backstabber,target,distance,anglemin,ang
 end
 
 local function Lu_BsF_StatusApplier(backstabber,target,distance,spell)
-    _P("In StatusApplier:",backstabber,target,spell)
+    --_P("In StatusApplier:",backstabber,target,spell)
     Osi.RemoveStatus(target,"BACKSTABBING_FRAMEWORK_MAIN_STATUS_200001")
     local anglemin,anglemax = Lu_BsF_AngleMinMax(Lu_BsF_CheckInAngleMatrix(backstabber,spell))
     if (Lu_BsF_BackstabbingCheck(backstabber,target,distance,anglemin,anglemax)) then
         Osi.ApplyStatus(target,"BACKSTABBING_FRAMEWORK_MAIN_STATUS_200001",5.0,1)
-        _P("Status Successfully applied to",target)
+        --_P("Status Successfully applied to",target)
     end
 end
 

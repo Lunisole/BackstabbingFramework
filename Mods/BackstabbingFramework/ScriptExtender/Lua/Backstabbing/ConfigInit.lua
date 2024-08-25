@@ -34,6 +34,15 @@ local function Lu_BsF_IsEntryValid(entry,place)
     end
 end
 
+local function Lu_BsF_DoesEntryAlreadyExist(data,list)
+    for _,value in ipairs(list) do
+        if (data == value) then
+            return false
+        end
+    end
+    return true
+end
+
 local function Lu_BsF_DoesAngleAlreadyExist(data,matrice)
     for index,value in ipairs(matrice) do
         if (data[1] == value[1]) then
@@ -47,7 +56,9 @@ local function Lu_BsF_AddSpellEntryToAngleMatrix(datalist)
     for index,value in ipairs(datalist) do
         local place = Lu_BsF_DoesAngleAlreadyExist(value,Lu_BsF_AngleMatrix)
         if (place) then
-            table.insert(Lu_BsF_AngleMatrix[place][2],value[2])
+            if Lu_BsF_DoesEntryAlreadyExist(value[2],Lu_BsF_AngleMatrix[place][2]) then
+                table.insert(Lu_BsF_AngleMatrix[place][2],value[2])
+            end
         else
             table.insert(Lu_BsF_AngleMatrix,{value[1],{value[2]},{}})
         end
@@ -58,7 +69,9 @@ local function Lu_BsF_AddPassiveEntryToAngleMatrix(datalist)
     for index,value in ipairs(datalist) do
         local place = Lu_BsF_DoesAngleAlreadyExist(value,Lu_BsF_AngleMatrix)
         if (place) then
-            table.insert(Lu_BsF_AngleMatrix[place][3],value[2])
+            if Lu_BsF_DoesEntryAlreadyExist(value[2],Lu_BsF_AngleMatrix[place][3]) then
+                table.insert(Lu_BsF_AngleMatrix[place][3],value[2])
+            end
         else
             table.insert(Lu_BsF_AngleMatrix,{value[1],{},{value[2]}})
         end
@@ -107,17 +120,17 @@ local function Lu_BsF_BuildAngleMatrix(ConfigFile)
     Lu_BsF_AddPassiveEntryToAngleMatrix(Lu_BsF_PassivesAngle)
 end
 
-local configFilePathPattern = string.gsub("Mods/%s/BackstabbingBlueprint.json", "'", "\'")
 local function OnSessionLoaded()
     for _,uuid in pairs(Ext.Mod.GetLoadOrder()) do
         local modData = Ext.Mod.GetMod(uuid)
         local filePath = configFilePathPattern:format(modData.Info.Directory)
         local ConfigFile = Ext.IO.LoadFile(filePath, "data")
+        _D(filePath)
         if (ConfigFile ~= nil and ConfigFile ~= "") then
-            _P("Found config for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
+            _P("Found Backstabbing Blueprint for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
             Lu_BsF_BuildAngleMatrix(ConfigFile)
         else
-            _P("No config file for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
+            --_P("No config file for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
         end
     end
     --_D(Lu_BsF_AngleMatrix)
