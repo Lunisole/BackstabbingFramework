@@ -120,10 +120,9 @@ local function OnSessionLoaded()
             _P("No config file for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
         end
     end
+    --_D(Lu_BsF_AngleMatrix)
+    table.sort(Lu_BsF_AngleMatrix, function(a, b) return a[1] > b[1] end)
     _D(Lu_BsF_AngleMatrix)
-    table.sort(Lu_BsF_AngleMatrix, function(a, b)
-        return a[1] > b[1]
-    end)
 end
 
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
