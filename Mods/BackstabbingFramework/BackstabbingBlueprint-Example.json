@@ -1,17 +1,17 @@
 {
   "EnablingSpells": [
-		
+	"Projectile_FireBolt"
   ],
   "EnablingPassives": [
-	
+	"SneakAttack_Unlock"
   ],
   "Custom" : 
 	{
 		"Spells" : [
-			
+			["Target_MainHandAttack",180]
 		],
 		"Passives": [
-	
+			["UnlockedSpellSlotLevel2",240]	
 		]
 	}
 }
