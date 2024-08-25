@@ -10,7 +10,7 @@ Just download the mod, and place it after _every_ mod that requires it.
 
 #### BackstabbingBlueprint.json
 
-If you're interested in the backstabbing mechanic (the one I used in [shade](https://www.nexusmods.com/baldursgate3/mods/10781?tab=description), then this project is meant for you. It features an easily configurable, and very much refined, backstabbing mechanic that also works outside of combat, unlike my shade mod. All you need to do is to place a [BackstabbingBlueprint.json](https://github.com/Lunisole/BackstabbingFramework/blob/main/Mods/BackstabbingFramework/BackstabbingBlueprint-Example.json) next to your meta.lsx.
+If you're interested in the backstabbing mechanic (the one I used in [shade](https://www.nexusmods.com/baldursgate3/mods/10781?tab=description)), then this project is meant for you. It features an easily configurable, and very much refined, backstabbing mechanic that also works outside of combat, unlike my shade mod. All you need to do is to place a [BackstabbingBlueprint.json](https://github.com/Lunisole/BackstabbingFramework/blob/main/Mods/BackstabbingFramework/BackstabbingBlueprint-Example.json) next to your meta.lsx.
 
 This file contains what spells/passives enable backstabbing in your mod.
 
