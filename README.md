@@ -18,7 +18,7 @@ The first 2 fields (EnablingSpells and EnablingPassives) are for easy configurat
 For instance in the example, there is "Projectile_FireBolt" in EnablingSpells, so any character will be able to backstab with that spell, and we also have "SneakAttack_Unlock" in EnablingPassives, so any character with this passive will be able to backstab (with any spell).
 
 The next field is Custom, which lets you customize the backstabbing angle of specific spells and passives.
-We need to put a list of 2 values in this field, the first one being the name of the spell/passive, and the second one being its associated backstabbing angle. If the angle is 90°, then it's basically the same as the first 2 fields mentionned above, although it'll still work. For instance in the example we have ```["Target_MainHandAttack",180]``` in Custom.Spells and ```["UnlockedSpellSlotLevel2",240]``` in Custom.Pasives.
+We need to put a list of 2 values in this field, the first one being the name of the spell/passive, and the second one being its associated backstabbing angle. If the angle is 90°, then it's basically the same as the first 2 fields mentionned above, although it'll still work. For instance in the example we have ```["Target_MainHandAttack",180]``` in Custom.Spells and ```["UnlockedSpellSlotLevel2",240]``` in Custom.Passives.
 
 The Angle is this file are basically divided by 2, and applied on each side of the character. So an angle of 90° is equal to 45° on each side of a character, and 180° is equal to 90° on each side (so basically if you're in the demi-circle on the back of the character). An angle of 360° means you'll always backstab.
 
