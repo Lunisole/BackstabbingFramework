@@ -1,6 +1,6 @@
 # Backstabbing Framework for BG3
 
-[Downloads available here](https:)
+[Downloads available here](https://www.nexusmods.com/baldursgate3/mods/11741/)
 
 ### For Users
 
