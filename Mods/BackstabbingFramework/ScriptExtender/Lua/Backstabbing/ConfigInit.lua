@@ -1,4 +1,4 @@
-local configFilePathPattern = string.gsub("Mods/%s/ScriptExtender/BackstabbingBlueprint.json", "'", "\'")
+local configFilePathPattern = string.gsub("Mods/%s/BackstabbingBlueprint.json", "'", "\'")
 Lu_BsF_EnablingSpells = {}
 Lu_BsF_EnablingPassives = {}
 Lu_BsF_SpellsAngle = {}
@@ -78,8 +78,7 @@ local function Lu_BsF_AddPassiveEntryToAngleMatrix(datalist)
     end
 end
 
-local function Lu_BsF_BuildAngleMatrix(ConfigFile)
-    local ParsedFile = Ext.Json.Parse(ConfigFile)
+local function Lu_BsF_BuildAngleMatrix(ParsedFile)
     local TempSpellList = {}
     local TempPassiveList = {}
     for index,spell in ipairs(ParsedFile.EnablingSpells) do
@@ -120,6 +119,21 @@ local function Lu_BsF_BuildAngleMatrix(ConfigFile)
     Lu_BsF_AddPassiveEntryToAngleMatrix(Lu_BsF_PassivesAngle)
 end
 
+local function Lu_BsF_IsJsonValid(json)
+    local state,data = pcall(function()
+        return Ext.Json.Parse(json)    
+    end)
+    if (state) then
+        if (data ~= nil) then
+            Lu_BsF_BuildAngleMatrix(data)
+        else
+            _P("Backstabbing Blueprint is empty")
+        end
+    else
+        _P("Invalid Backstabbing Blueprint",data)
+    end
+end
+
 local function OnSessionLoaded()
     for _,uuid in pairs(Ext.Mod.GetLoadOrder()) do
         local modData = Ext.Mod.GetMod(uuid)
@@ -128,7 +142,7 @@ local function OnSessionLoaded()
         _D(filePath)
         if (ConfigFile ~= nil and ConfigFile ~= "") then
             _P("Found Backstabbing Blueprint for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
-            Lu_BsF_BuildAngleMatrix(ConfigFile)
+            Lu_BsF_IsJsonValid(ConfigFile)
         else
             --_P("No config file for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
         end
