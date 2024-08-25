@@ -1,23 +1,17 @@
 {
   "EnablingSpells": [
-	"Target_MainHandAttack",
-	"Target_HealingWord"
+		
   ],
   "EnablingPassives": [
-	"UnlockedSpellSlotLevel2"
+	
   ],
   "Custom" : 
 	{
 		"Spells" : [
-			["Projectile_FireBolt",90]
+			
 		],
 		"Passives": [
-			["SneakAttack_Unlock",45],
-			["W/E",45],
-			["LUL",90],
-			["IDKMAN",74],
-			["EHTHATSABIGNUMBER",320],
-			["GUARANTEEDLLE",360]
+	
 		]
 	}
 }
