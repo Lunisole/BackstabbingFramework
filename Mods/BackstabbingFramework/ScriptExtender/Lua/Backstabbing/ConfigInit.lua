@@ -139,7 +139,7 @@ local function OnSessionLoaded()
         local modData = Ext.Mod.GetMod(uuid)
         local filePath = configFilePathPattern:format(modData.Info.Directory)
         local ConfigFile = Ext.IO.LoadFile(filePath, "data")
-        _D(filePath)
+        --_D(filePath)
         if (ConfigFile ~= nil and ConfigFile ~= "") then
             _P("Found Backstabbing Blueprint for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
             Lu_BsF_IsJsonValid(ConfigFile)
@@ -149,7 +149,7 @@ local function OnSessionLoaded()
     end
     --_D(Lu_BsF_AngleMatrix)
     table.sort(Lu_BsF_AngleMatrix, function(a, b) return a[1] > b[1] end)
-    _D(Lu_BsF_AngleMatrix)
+    --_D(Lu_BsF_AngleMatrix)
 end
 
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
