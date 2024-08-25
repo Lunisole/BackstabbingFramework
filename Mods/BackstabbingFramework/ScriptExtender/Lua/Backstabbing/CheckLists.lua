@@ -1,5 +1,4 @@
 function Lu_BsF_SpellInList(spell,list)
-    print('function is running')
     for _,spellcheck in pairs(list) do
       if spell == spellcheck then
         print('Spell is Valid')
@@ -11,9 +10,8 @@ function Lu_BsF_SpellInList(spell,list)
 end
 
 function Lu_BsF_PassiveInList(entity,list)
-    print('function is running')
     for _,passivecheck in pairs(list) do
-      if HasPassive(entity,passivecheck) == 1 then
+      if (HasPassive(entity,passivecheck)) == 1 then
         print('Entity Has Valid Passive')
         return true
       end
