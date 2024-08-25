@@ -5,9 +5,9 @@
 		<node id="TextureBank">
 			<children>
 				<node id="Resource">
-					<attribute id="ID" type="FixedString" value="79d15a4c-dea2-4fc7-813a-8498fdc6f786" />
+					<attribute id="ID" type="FixedString" value="54dc6441-ac7c-4f72-baf3-8ed2d49271ea" />
 					<attribute id="Localized" type="bool" value="False" />
-					<attribute id="Name" type="LSString" value="BackstabbingFramework_Icons" />
+					<attribute id="Name" type="LSString" value="Backstabbing_Framework_Icons" />
 					<attribute id="SRGB" type="bool" value="True" />
 					<attribute id="SourceFile" type="LSString" value="Public/BackstabbingFramework/Assets/Textures/Icons/BackstabbingFramework_Icons.dds" />
 					<attribute id="Streaming" type="bool" value="True" />

@@ -1,4 +1,4 @@
-listetest = {{45,"ABC"},{37,"TRENTESEPT"},{45,"BCA"},{180,"ARF"},{37,"pls"},{45,"test"},{360,"THREE SIXTY"}}
+local configFilePathPattern = string.gsub("Mods/%s/ScriptExtender/BackstabbingBlueprint.json", "'", "\'")
 Lu_BsF_EnablingSpells = {}
 Lu_BsF_EnablingPassives = {}
 Lu_BsF_SpellsAngle = {}
@@ -107,12 +107,23 @@ local function Lu_BsF_BuildAngleMatrix(ConfigFile)
     Lu_BsF_AddPassiveEntryToAngleMatrix(Lu_BsF_PassivesAngle)
 end
 
+local configFilePathPattern = string.gsub("Mods/%s/BackstabbingBlueprint.json", "'", "\'")
 local function OnSessionLoaded()
-    local ConfigFile = Ext.IO.LoadFile("Mods/BackstabbingFramework/BackstabbingBlueprint-Example.json","data")
-    Lu_BsF_BuildAngleMatrix(ConfigFile)
+    for _,uuid in pairs(Ext.Mod.GetLoadOrder()) do
+        local modData = Ext.Mod.GetMod(uuid)
+        local filePath = configFilePathPattern:format(modData.Info.Directory)
+        local ConfigFile = Ext.IO.LoadFile(filePath, "data")
+        if (ConfigFile ~= nil and ConfigFile ~= "") then
+            _P("Found config for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
+            Lu_BsF_BuildAngleMatrix(ConfigFile)
+        else
+            _P("No config file for Mod: " .. Ext.Mod.GetMod(uuid).Info.Name)
+        end
+    end
     _D(Lu_BsF_AngleMatrix)
-    _D(Lu_BsF_EnablingSpells)
-    _D(Lu_BsF_EnablingPassives)
+    table.sort(Lu_BsF_AngleMatrix, function(a, b)
+        return a[1] > b[1]
+    end)
 end
 
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
