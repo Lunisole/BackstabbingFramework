@@ -28,4 +28,4 @@ The backstabbing state is handled through a status, called ```BACKSTABBING_FRAME
 
 ### Thanks
 
-To Norbyte for being the goat. To Volitio and NellsRello, for their amazing mod respectively MCM and the Community Library, from which I yoinked some code lines. Also to Aahz, Focus, Muffin, Simosas, Satan and Mithras for helping me with the scripting.  Also thanks to JuuM, for being MuuJ, and to Sensha (the actual goat) cause she's good at maths and gave me the inspiration for this mod.
+To Norbyte for being the goat. To Volitio and NellsRello, for theirs amazing mod MCM and Community Library respectively, from which I yoinked some code lines. Also to Aahz, Focus, Muffin, Simosas, Satan and Mithras for helping me with the scripting.  To JuuM, for being MuuJ, and to Sensha (the actual goat) cause french, get owned.
