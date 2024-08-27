@@ -149,7 +149,7 @@ local function OnSessionLoaded()
     end
     --_D(Lu_BsF_AngleMatrix)
     table.sort(Lu_BsF_AngleMatrix, function(a, b) return a[1] > b[1] end)
-    --_D(Lu_BsF_AngleMatrix)
+    _D(Lu_BsF_AngleMatrix)
 end
 
 Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
