@@ -18,9 +18,9 @@ The first 2 fields (EnablingSpells and EnablingPassives) are for easy configurat
 For instance in the example, there is "Projectile_FireBolt" in EnablingSpells, so any character will be able to backstab with that spell, and we also have "SneakAttack_Unlock" in EnablingPassives, so any character with this passive will be able to backstab (with any spell).
 
 The next field is Custom, which lets you customize the backstabbing angle of specific spells and passives.
-We need to put a list of 2 values in this field, the first one being the name of the spell/passive, and the second one being its associated backstabbing angle. If the angle is 90°, then it's basically the same as the first 2 fields mentionned above, although it'll still work. For instance in the example we have ```["Target_MainHandAttack",180]``` in Custom.Spells and ```["UnlockedSpellSlotLevel2",240]``` in Custom.Passives.
+We need to put a list of 2 values in this field, the first one being the name of the spell/passive, and the second one being its associated backstabbing angle. If the angle is 90°, then it's basically the same as the first 2 fields mentionned above, although it'll still work. For instance in the example we have ```["Target_MainHandAttack",180]``` in Custom.Spells and ```["UnlockedSpellSlotLevel2",240]``` in Custom.Passives. You don't need to add the entry to EnablingSpells and EnablingPassives, the mod automatically does it.
 
-The Angle is this file are basically divided by 2, and applied on each side of the character. So an angle of 90° is equal to 45° on each side of a character, and 180° is equal to 90° on each side (so basically if you're in the demi-circle on the back of the character). An angle of 360° means you'll always backstab.
+The Angle is this file are basically divided by 2, and applied on each side of the character. So an angle of 90° is equal to 45° on each side of a character, and 180° is equal to 90° on each side (so basically if you're in the demi-circle on the back of the character). An angle of 360° means you'll always backstab. In case a character has more than 1 trigger of backstabbing, the best outcome is kept (i.e. the largest angle). This also means that if a character possess a passive with a 90° angle, then it'll be impossible to set the angle to a value lower than 90°. This is an issue I'll fix.
 
 #### The Backstabbing Status
 
@@ -28,4 +28,4 @@ The backstabbing state is handled through a status, called ```BACKSTABBING_FRAME
 
 ### Thanks
 
-To Norbyte for being the goat. To Volitio and NellsRello, for their amazing mod respectively MCM and the Community Library, from which I yoinked some code lines. Also to Aahz, Focus, Muffin, Simosas, Satan and Mithras for helping me with the scripting.  Also thanks to JuuM, for being MuuJ, and to Sensha (the actual goat) cause she's good at maths and gave me the inspiration for this mod.
+To Norbyte for being the goat. To Volitio and NellsRello, for theirs amazing mod MCM and Community Library respectively, from which I yoinked some code lines. Also to Aahz, Focus, Muffin, Simosas, Satan and Mithras for helping me with the scripting.  To JuuM, for being MuuJ, and to Sensha (the actual goat) and Fallen (he answered 1 question, imagine) cause french :) Get owned.
