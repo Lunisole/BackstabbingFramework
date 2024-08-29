@@ -1,10 +1,13 @@
 {
-  "EnablingSpells": [
-	"Projectile_FireBolt"
-  ],
-  "EnablingPassives": [
-	"SneakAttack_Unlock"
-  ],
+  "Enabling" : 
+	{
+		"Spells" : [
+			"Projectile_FireBolt"
+		],
+		"Passives": [
+			"SneakAttack_Unlock"	
+		]
+	},
   "Custom" : 
 	{
 		"Spells" : [
@@ -12,6 +15,17 @@
 		],
 		"Passives": [
 			["UnlockedSpellSlotLevel2",240]	
+		]
+	},
+  "Modifiers" : 
+	{
+		"Spells" : [
+			["Target_Smite_Divine",40],
+			["Target_SneakAttack",15],
+			["Projectile_SneakAttack",30]
+		],
+		"Passives" : [
+			["DivineHealth",30]
 		]
 	}
 }
