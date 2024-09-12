@@ -1,6 +1,6 @@
 Lu_BsF_DebugState = false
 
-local function BsFDebug(_,wishedstate)
+function BsFDebug(_,wishedstate)
     if (wishedstate == nil) then
         Lu_BsF_DebugState = not Lu_BsF_DebugState
     else

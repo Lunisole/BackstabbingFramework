@@ -45,7 +45,7 @@ function Lu_BsF_CheckModifiers(backstabber,spell)
   return anglemod
 end
 
-local function Lu_BsF_SpellInList(spell,list)
+function Lu_BsF_SpellInList(spell,list)
     for _,spellcheck in pairs(list) do
       if (spell == spellcheck) then
         if Lu_BsF_DebugState then
@@ -60,7 +60,7 @@ local function Lu_BsF_SpellInList(spell,list)
     return false
 end
 
-local function Lu_BsF_PassiveInList(entity,list)
+function Lu_BsF_PassiveInList(entity,list)
     for _,passivecheck in pairs(list) do
       if (HasPassive(entity,passivecheck) == 1) then
         if Lu_BsF_DebugState then

@@ -7,7 +7,7 @@ Lu_BsF_SpellsModifiers = {}
 Lu_BsF_PassivesModifiers = {}
 Lu_BsF_AngleMatrix = {}
 
-local function Lu_BsF_IsEntryValid(entry,place)
+function Lu_BsF_IsEntryValid(entry,place)
     if (type(entry) == "table") then
         if (type(entry[1]) == "string") then
             if (type(entry[2]) == "number") then
@@ -36,7 +36,7 @@ local function Lu_BsF_IsEntryValid(entry,place)
     end
 end
 
-local function Lu_BsF_DoesEntryAlreadyExist(data,list)
+function Lu_BsF_DoesEntryAlreadyExist(data,list)
     for _,value in ipairs(list) do
         if (data == value) then
             return false
@@ -45,7 +45,7 @@ local function Lu_BsF_DoesEntryAlreadyExist(data,list)
     return true
 end
 
-local function Lu_BsF_DoesAngleAlreadyExist(data,matrice)
+function Lu_BsF_DoesAngleAlreadyExist(data,matrice)
     for index,value in ipairs(matrice) do
         if (data[1] == value[1]) then
             return index
@@ -54,7 +54,7 @@ local function Lu_BsF_DoesAngleAlreadyExist(data,matrice)
     return nil
 end
 
-local function Lu_BsF_AddSpellEntryToAngleMatrix(datalist)
+function Lu_BsF_AddSpellEntryToAngleMatrix(datalist)
     for index,value in ipairs(datalist) do
         local place = Lu_BsF_DoesAngleAlreadyExist(value,Lu_BsF_AngleMatrix)
         if (place) then
@@ -67,7 +67,7 @@ local function Lu_BsF_AddSpellEntryToAngleMatrix(datalist)
     end
 end
 
-local function Lu_BsF_AddPassiveEntryToAngleMatrix(datalist)
+function Lu_BsF_AddPassiveEntryToAngleMatrix(datalist)
     for index,value in ipairs(datalist) do
         local place = Lu_BsF_DoesAngleAlreadyExist(value,Lu_BsF_AngleMatrix)
         if (place) then
@@ -80,7 +80,7 @@ local function Lu_BsF_AddPassiveEntryToAngleMatrix(datalist)
     end
 end
 
-local function Lu_BsF_BuildAngleMatrix(ParsedFile)
+function Lu_BsF_BuildAngleMatrix(ParsedFile)
     local TempSpellList = {}
     local TempPassiveList = {}
     for index,spell in ipairs(ParsedFile.Enabling.Spells) do
@@ -145,7 +145,7 @@ local function Lu_BsF_BuildAngleMatrix(ParsedFile)
     Lu_BsF_AddPassiveEntryToAngleMatrix(Lu_BsF_PassivesAngle)
 end
 
-local function Lu_BsF_IsJsonValid(json)
+function Lu_BsF_IsJsonValid(json)
     local state,data = pcall(function()
         return Ext.Json.Parse(json)    
     end)
@@ -160,7 +160,7 @@ local function Lu_BsF_IsJsonValid(json)
     end
 end
 
-local function OnSessionLoaded()
+local function Lu_BsF_Init()
     for _,uuid in pairs(Ext.Mod.GetLoadOrder()) do
         local modData = Ext.Mod.GetMod(uuid)
         local filePath = configFilePathPattern:format(modData.Info.Directory)
@@ -185,4 +185,9 @@ local function OnSessionLoaded()
     end
 end
 
-Ext.Events.SessionLoaded:Subscribe(OnSessionLoaded)
+Ext.Events.GameStateChanged:Subscribe(function(Lu_BsF_peepohelp)
+   if Lu_BsF_peepohelp.FromState == "Sync" and Lu_BsF_peepohelp.ToState == "Running" then
+    _P("Thanks Norb, very sorry. It's facts.")
+    Lu_BsF_Init()
+   end
+end)

@@ -1,4 +1,4 @@
-local function Lu_BsF_AngleMinMax(angle,modifier)
+function Lu_BsF_AngleMinMax(angle,modifier)
     if Lu_BsF_DebugState then
         _P("In AngleMinMax : ")
         _P("Angle is : " .. angle,"Modifier is : " .. modifier)
@@ -9,7 +9,7 @@ local function Lu_BsF_AngleMinMax(angle,modifier)
     return anglemin,anglemax
 end 
 
-local function Lu_BsF_CharSteeringVec(target)
+function Lu_BsF_CharSteeringVec(target)
     if Lu_BsF_DebugState then
         _P("In CharSteeringVec : ",target)
     end
@@ -19,7 +19,7 @@ local function Lu_BsF_CharSteeringVec(target)
     return orient
 end 
 
-local function Lu_BsF_BackstabbingCheck(backstabber,target,distance,anglemin,anglemax)
+function Lu_BsF_BackstabbingCheck(backstabber,target,distance,anglemin,anglemax)
     if Lu_BsF_DebugState then
         _P("In BackstabbingCheck : ",backstabber,target,anglemin,anglemax)
     end
@@ -33,7 +33,7 @@ local function Lu_BsF_BackstabbingCheck(backstabber,target,distance,anglemin,ang
     end
 end
 
-local function Lu_BsF_StatusApplier(backstabber,target,distance,spell)
+function Lu_BsF_StatusApplier(backstabber,target,distance,spell)
     if Lu_BsF_DebugState then
         _P("In StatusApplier : ",backstabber,target,spell)
     end
