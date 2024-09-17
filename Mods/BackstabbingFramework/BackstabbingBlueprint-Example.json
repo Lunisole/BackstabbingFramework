@@ -4,7 +4,7 @@
 		"Spells" : [
 			"Projectile_FireBolt"
 		],
-		"Passives": [
+		"Passives" : [
 			"SneakAttack_Unlock"	
 		]
 	},
@@ -13,7 +13,7 @@
 		"Spells" : [
 			["Target_MainHandAttack",180]
 		],
-		"Passives": [
+		"Passives" : [
 			["UnlockedSpellSlotLevel2",240]	
 		]
 	},
@@ -26,6 +26,15 @@
 		],
 		"Passives" : [
 			["DivineHealth",30]
+		]
+	},
+	"Flanking" :
+	{
+		"Spells" : [
+			"Target_MainHandAttack"
+		],
+		"Passives" : [
+			"SneakAttack_Unlock"
 		]
 	}
 }

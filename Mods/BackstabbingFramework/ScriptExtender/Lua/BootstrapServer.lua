@@ -1,5 +1,5 @@
 Ext.Require("Backstabbing/BackstabbingCalc.lua")
-Ext.Require("Backstabbing/ConfigInit.lua")
-Ext.Require("Backstabbing/CheckLists.lua")
-Ext.Require("Backstabbing/Debugging.lua")
-
+Ext.Require("Flanking/FlankingCalc.lua")
+Ext.Require("General/ConfigInit.lua")
+Ext.Require("General/CheckLists.lua")
+Ext.Require("General/Debugging.lua")
